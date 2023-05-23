@@ -217,10 +217,8 @@ while True:
                                     buku = input("Masukkan Nama Buku: ")
                                     if validasiNamaDanBuku(buku,"Judul")>=0:
                                         dataPeminjam[mahaKe]["Tanggal Peminjaman"]=tgl
-                                        if tgl+7>30:
-                                            dataPeminjam[mahaKe]["Tanggal Pengembalian"]=(tgl+7)-30
-                                        else:
-                                            dataPeminjam[mahaKe]["Tanggal Pengembalian"]=tgl+7
+                                        '''Tanggal Pengembalian (Default : H+7 dari tanggal peminjaman, format :D)'''
+                                        dataPeminjam[mahaKe]["Tanggal Pengembalian"]=tgl+7
                                         dataPeminjam[mahaKe]["Nama Buku yang Dipinjam"]=buku
                                         validasi("Berhasil Edit Data")
                                         break
