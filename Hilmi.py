@@ -220,9 +220,9 @@ while True:
                                     if validasiNamaDanBuku(buku,"Judul")>=0:
                                         dataPeminjam[mahaKe]["Tanggal Peminjaman"]=tgl
                                         if tgl+7>30:
-                                            tglKembali=(tgl+7)-30
+                                            dataPeminjam[mahaKe]["Tanggal Pengembalian"]=(tgl+7)-30
                                         else:
-                                            tglKembali=tgl+7
+                                            dataPeminjam[mahaKe]["Tanggal Pengembalian"]=tgl+7
                                         dataPeminjam[mahaKe]["Nama Buku yang Dipinjam"]=buku
                                         validasi("Berhasil Edit Data")
                                         break
