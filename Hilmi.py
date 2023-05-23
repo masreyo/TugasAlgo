@@ -251,11 +251,20 @@ while True:
                                     buku = dataPeminjam[mahaKe]["Nama Buku yang Dipinjam"]
                                     stokKe=int(validasiNamaDanBuku(buku,"Judul"))
                                     dataBuku[stokKe]["Jumlah Buku"]+=1
-                                    #Proses Ubah Data Mhs
-                                    if dataPeminjam[mahaKe]["Tanggal Pengembalian"]+7>30:
-                                        terlambat=(tgl+7)-dataPeminjam[mahaKe]["Tanggal Pengembalian"]
+                                    #Proses menghitung denda
+                                    #Menghitung selisih hari
+                                    selisihHari = dataPeminjam[mahaKe]["Tanggal Peminjaman"] - tgl
+                                    if selisihHari <= 7:
+                                        terlambat = 0
                                     else:
-                                        terlambat=tgl-dataPeminjam[mahaKe]["Tanggal Pengembalian"]
+                                        #30 hari pertama
+                                        selisihHari -= 30
+                                        #Menghitung selisih hari (2)
+                                        if selisihHari <= 0:
+                                            terlambat = 1
+                                        else:
+                                            terlambat = (selisihHari // 30) + 1
+                                            
                                     if(terlambat>0):
                                         dataPeminjam[mahaKe]["Denda"]=500*terlambat
                                     dataPeminjam[mahaKe]["Tanggal Pengembalian"]=tgl
