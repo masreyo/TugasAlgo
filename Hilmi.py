@@ -182,10 +182,8 @@ while True:
                                 #Mengurangi Stok
                                 dataBuku[stokKe]["Jumlah Buku"]-=1 
                                 #Proses Penambahan
-                                if tgl+7>30:
-                                    tglKembali=(tgl+7)-30
-                                else:
-                                    tglKembali=tgl+7
+                                '''Tanggal Pengembalian (Default : H+7 dari tanggal peminjaman, format :D)'''
+                                tglKembali=tgl+7
                                 dataTambahPeminjam={
                                     "Tanggal Peminjaman": tgl, 
                                     "Tanggal Pengembalian": tglKembali,
