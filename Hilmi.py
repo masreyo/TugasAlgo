@@ -252,21 +252,17 @@ while True:
                                     stokKe=int(validasiNamaDanBuku(buku,"Judul"))
                                     dataBuku[stokKe]["Jumlah Buku"]+=1
                                     #Proses menghitung denda
-                                    #Menghitung selisih hari
-                                    selisihHari = dataPeminjam[mahaKe]["Tanggal Peminjaman"] - tgl
-                                    if selisihHari <= 7:
-                                        terlambat = 0
-                                    else:
-                                        #30 hari pertama
-                                        selisihHari -= 30
-                                        #Menghitung selisih hari (2)
-                                        if selisihHari <= 0:
-                                            terlambat = 1
-                                        else:
-                                            terlambat = (selisihHari // 30) + 1
-                                            
-                                    if(terlambat>0):
-                                        dataPeminjam[mahaKe]["Denda"]=500*terlambat
+                                    selisih = tgl-dataPeminjam[mahaKe]["Tanggal Peminjaman"]
+                                    '''Jumlah kemunduran dihitung dari 
+                                    total selisih tanggal pengembalian 
+                                    dengan peminjaman dikurangi dengan 7'''
+                                    kemunduran= selisih-7
+                                    '''ketika tanggal pengembalian
+                                    dikurangi tanggal peminjaman adalah >7'''
+                                    if(selisih>7):
+                                        '''Denda dihitung dari jumlah kemunduran
+                                        pengembalian dikali dengan 500'''
+                                        dataPeminjam[mahaKe]["Denda"]=kemunduran*500
                                     dataPeminjam[mahaKe]["Tanggal Pengembalian"]=tgl
                                     dataPeminjam[mahaKe]["Status"]="Kembali"
                                     dataPengembali.append(dataPeminjam[mahaKe])
