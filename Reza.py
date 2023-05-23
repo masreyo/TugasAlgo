@@ -34,8 +34,9 @@ def hapus_buku(dataBuku,dataPeminjam):
     Isbn = input("Masukkan ISBN buku yang ingin anda hapus : ")
     for buku in dataBuku:
         if buku["ISBN"] == Isbn:
+            judulBuku=buku["Judul"]
             for peminjam in dataPeminjam:
-                if peminjam["Status"] != "Pinjam" and Isbn==peminjam["Nama Buku yang Dipinjam"]:
+                if judulBuku==peminjam["Nama Buku yang Dipinjam"]:
                     print("Buku masih dipinjam dan tidak dapat dihapus.")
                     return 0
             dataBuku.remove(buku)
