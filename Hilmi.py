@@ -252,7 +252,10 @@ while True:
                                     stokKe=int(validasiNamaDanBuku(buku,"Judul"))
                                     dataBuku[stokKe]["Jumlah Buku"]+=1
                                     #Proses Ubah Data Mhs
-                                    terlambat=tgl-dataPeminjam[mahaKe]["Tanggal Pengembalian"]
+                                    if dataPeminjam[mahaKe]["Tanggal Pengembalian"]+7>30:
+                                        terlambat=(tgl+7)-dataPeminjam[mahaKe]["Tanggal Pengembalian"]
+                                    else:
+                                        terlambat=tgl-dataPeminjam[mahaKe]["Tanggal Pengembalian"]
                                     if(terlambat>0):
                                         dataPeminjam[mahaKe]["Denda"]=500*terlambat
                                     dataPeminjam[mahaKe]["Tanggal Pengembalian"]=tgl
