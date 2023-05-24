@@ -129,7 +129,7 @@ while True:
         def validasiTgl(tgl):
             if tgl.isdigit():
                 tgl=int(tgl)
-                if tgl<=30 and tgl>0:
+                if tgl>0:
                     return 1
                 else: 
                     return 0
